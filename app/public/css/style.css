@@ -1,0 +1,25 @@
+body{
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.round,
+.display-3{
+    font-family: 'Fredoka One', cursive;
+}
+
+
+.smFont{
+    font-family: 'Assistant', sans-serif;
+}
+
+.ques{
+    font-family: 'Assistant', sans-serif;
+    font-weight: bold;
+}
+
+#submit{
+    width: 100%;
+}
+
+/*font-family: 'Archivo Black', sans-serif;*/
+/*font-family: 'Fredoka One', cursive;*/

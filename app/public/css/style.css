@@ -21,5 +21,10 @@ body{
     width: 100%;
 }
 
+#message{
+    color: red;
+}
+
+
 /*font-family: 'Archivo Black', sans-serif;*/
 /*font-family: 'Fredoka One', cursive;*/

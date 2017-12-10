@@ -12,36 +12,54 @@
     </head>
     <body>
         <div class="container">
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"id="matchModal">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">   Friend Found: Your best match is <span id="matchName"></span>!</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p id="matchPic"></p>
+                    <br>
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="card">
               <div class="card-header round">
                 <h3>Survey Questions</h3>
               </div>
               <div class="card-block">
                 <h5 class="card-title">About You</h5>
-                <form>
+                <form method="POST" id="theForm">
                   <div class="form-group">
-                    <label class="ques" for="name">Name (required)</label>
-                    <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="">
+                    <label class="ques" for="name" >Name (required)</label>
+                    <input type="name" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="">
                     <small id="emailHelp" class="form-text text-muted"></small>
                   </div>
                   <div class="form-group">
-                    <label class="ques" for="photoLink">Link to Photo Image (required)</label>
-                    <input type="input" class="form-control" id="photoLink" placeholder="">
+                    <label class="ques" for="photoLink" >Link to Photo Image (required)</label>
+                    <input type="input" class="form-control" placeholder="" id="userImage">
                   </div>
                   <hr>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 1</h5></label>
                     <p class="ques" class="form-text ">Your mind is always buzzing with unexplored ideas and plans.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -50,15 +68,15 @@
                     <label for="exampleSelect1"><h5>Question 2</h5></label>
                     <p class="ques" class="form-text ">Generally speaking, you rely more on your experience than your imagination.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                       <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -67,15 +85,15 @@
                     <label for="exampleSelect1"><h5>Question 3</h5></label>
                     <p class="ques" class="form-text ">You find it easy to stay relaxed and focused even when there is some pressure.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -84,15 +102,15 @@
                     <label for="exampleSelect1"><h5>Question 4</h5></label>
                     <p class="ques" class="form-text ">You rarely do something just out of sheer curiosity.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -101,15 +119,15 @@
                     <label for="exampleSelect1"><h5>Question 5</h5></label>
                     <p class="ques" class="form-text ">People can rarely upset you.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -118,15 +136,15 @@
                     <label for="exampleSelect1"><h5>Question 6</h5></label>
                     <p class="ques" class="form-text ">It is often difficult for you to relate to other people’s feelings.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -135,15 +153,15 @@
                     <label for="exampleSelect1"><h5>Question 7</h5></label>
                     <p class="ques" class="form-text ">In a discussion, truth should be more important than people’s sensitivities.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -152,15 +170,15 @@
                     <label for="exampleSelect1"><h5>Question 8</h5></label>
                     <p class="ques" class="form-text ">You rarely get carried away by fantasies and ideas.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -169,15 +187,15 @@
                     <label for="exampleSelect1"><h5>Question 9</h5></label>
                     <p class="ques" class="form-text ">You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
@@ -186,36 +204,92 @@
                     <label for="exampleSelect1"><h5>Question 10</h5></label>
                     <p class="ques" class="form-text ">You feel more energetic after spending time with a group of people.</p>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (strongly agree)</button>
-                        <button class="dropdown-item" type="button">2 (somewhat agree)</button>
-                        <button class="dropdown-item" type="button">3 (neutral)</button>
-                        <button class="dropdown-item" type="button">4 (somewhat disagree)</button>
-                        <button class="dropdown-item" type="button">5 (strongly disagree)</button>
+                        <button class="dropdown-item" type="button" value="1">1 (strongly agree)</button>
+                        <button class="dropdown-item" type="button" value="2">2 (somewhat agree)</button>
+                        <button class="dropdown-item" type="button" value="3">3 (neutral)</button>
+                        <button class="dropdown-item" type="button" value="4">4 (somewhat disagree)</button>
+                        <button class="dropdown-item" type="button" value="5">5 (strongly disagree)</button>
                       </div>
                     </div>
                   </div>
-                  
-                 
                   <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit</button>
+                  <br>
+                  <p id="message">Please Input All Information</p>
                 </form>
               </div>
             </div>
             <br>
-            <p class="smFont"><a href="#">API Friends List</a> | <a href="#">GitHub Repo</a></p>
+            <p class="smFont"><a href="/api/friends">API Friends List</a> | <a href="https://github.com/barroncn/friend-finder">GitHub Repo</a></p>
         </div>
-        <script>
+        <script type="text/javascript">
+            $("#message").hide();
+            //When the user selects an answer, the answer populates the button
             $(".dropdown-item").click(function(){
                 var selText = $(this).text();
                 $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
             });
+            //When the user clicks the API link, all the friend data displays in JSON
+            $("#allAPI").on("click", function(){
+                $.get("/api/friends", function(data){})
+            });
+            
+            //When the user clicks submit
+            $("#submit").on("click", function(){
+              event.preventDefault();
+              $("#message").hide();
+              //if the user has filled out the survey completely
+              if($("#userName").val()!="" && $("#userImage").val()!="" && $("#q1").text()!="Select an Option" && $("#q2").text()!="Select an Option" && $("#q3").text()!="Select an Option" && $("#q4").text()!="Select an Option" && $("#q5").text()!="Select an Option" && $("#q6").text()!="Select an Option" && $("#q7").text()!="Select an Option" && $("#q8").text()!="Select an Option" && $("#q9").text()!="Select an Option" && $("#q10").text()!="Select an Option"){
+                var aNewFriend = {
+                                  "name":$("#userName").val().trim(),
+                                  "photo":$("#userImage").val().trim(),
+                                  "scores":[
+                                      $("#q1").text()[0],
+                                      $("#q2").text()[0],
+                                      $("#q3").text()[0],
+                                      $("#q4").text()[0],
+                                      $("#q5").text()[0],
+                                      $("#q6").text()[0],
+                                      $("#q7").text()[0],
+                                      $("#q8").text()[0],
+                                      $("#q9").text()[0],
+                                      $("#q10").text()[0]
+                                    ]
+                                }
+                var sum = 0;
+                for (var i = 0; i < aNewFriend.scores.length; i++){
+                  sum += parseInt(aNewFriend.scores[i]);
+                }
+                
+                aNewFriend.sum = sum;
+                
+                console.log(aNewFriend);
+                
+                 $.post("/api/friends", aNewFriend).done(function(data){
+                   console.log(data);
+                   //MODAL!
+                  $("#matchPic").html("<img width='100%' src="+ data.photo +">");
+                  $("#matchName").html(data.name);
+                  $('#matchModal').modal();
+                 });
+                 
+                 //Reset the Form
+                 $("#theForm")[0].reset();
+                 $(".dropdown-toggle").text("Select an Option");
+              }
+              //Advise the user that they must fill out the survey completely
+              else{
+                $("#message").show();
+              }
+            })
+            
         </script>
         <script type="text/javascript" src="../routing/apiRoutes.js"></script>
         <script type="text/javascript" src="../routing/htmlRoutes.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </body>

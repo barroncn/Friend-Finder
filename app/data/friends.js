@@ -1,3 +1,5 @@
+//App data for 7 potential friend matches
+
 var friends = [
   
   {
@@ -128,4 +130,4 @@ var friends = [
   
 ];
   
-module.exports = friends;
+module.exports = friends; //Export the friends array

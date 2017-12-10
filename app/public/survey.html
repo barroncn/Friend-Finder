@@ -225,29 +225,39 @@
             <br>
             <p class="smFont"><a href="/api/friends">API Friends List</a> | <a href="https://github.com/barroncn/friend-finder">GitHub Repo</a></p>
         </div>
+        
         <script type="text/javascript">
+            //Hide the incomplete input message when the page loads
             $("#message").hide();
-            //When the user selects an answer, the answer populates the button
+            
+            //When the user selects an answer, the answer text populates the button
             $(".dropdown-item").click(function(){
                 var selText = $(this).text();
                 $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
             });
-            //When the user clicks the API link, all the friend data displays in JSON
+            
+            //When the user clicks the API link, a get request is made to /api/friends
             $("#allAPI").on("click", function(){
                 $.get("/api/friends", function(data){})
             });
             
             //When the user clicks submit
             $("#submit").on("click", function(){
+              //keep the page from reloading
               event.preventDefault();
+              
+              //Hide the incomplete entry message (in case they didn't fill out the form correctly on a previous submit click)
               $("#message").hide();
-              //if the user has filled out the survey completely
+              
+              //IF the user has filled out the survey completely (all inputs and dropdowns have been answered)
               if($("#userName").val()!="" && $("#userImage").val()!="" && $("#q1").text()!="Select an Option" && $("#q2").text()!="Select an Option" && $("#q3").text()!="Select an Option" && $("#q4").text()!="Select an Option" && $("#q5").text()!="Select an Option" && $("#q6").text()!="Select an Option" && $("#q7").text()!="Select an Option" && $("#q8").text()!="Select an Option" && $("#q9").text()!="Select an Option" && $("#q10").text()!="Select an Option"){
+                
+                //Create aNewFriend object in the appropriate format for posting to our api
                 var aNewFriend = {
                                   "name":$("#userName").val().trim(),
                                   "photo":$("#userImage").val().trim(),
                                   "scores":[
-                                      $("#q1").text()[0],
+                                      $("#q1").text()[0], //Takes only the rating digit from the button text (the first index of the text)
                                       $("#q2").text()[0],
                                       $("#q3").text()[0],
                                       $("#q4").text()[0],
@@ -258,22 +268,22 @@
                                       $("#q9").text()[0],
                                       $("#q10").text()[0]
                                     ]
-                                }
-                var sum = 0;
+                                };
+                                
+                var sum = 0; //Set the answer choice sum to zero
+                
+                //loop through aNewFriend scores array to add up the answers choices
                 for (var i = 0; i < aNewFriend.scores.length; i++){
                   sum += parseInt(aNewFriend.scores[i]);
                 }
                 
-                aNewFriend.sum = sum;
+                aNewFriend.sum = sum; //In the aNewFriend object, set a new key "sum" to the sum of the answer choices
                 
-                console.log(aNewFriend);
-                
-                 $.post("/api/friends", aNewFriend).done(function(data){
-                   console.log(data);
-                   //MODAL!
-                  $("#matchPic").html("<img width='100%' src="+ data.photo +">");
-                  $("#matchName").html(data.name);
-                  $('#matchModal').modal();
+                 //Send the aNewFriend object as data in a post request to /api/friends
+                 $.post("/api/friends", aNewFriend).done(function(data){//Once the request has been posted, the server will send back the matching friend object as "data" (see apiRoutes.js for how we selected the matching friend as the server's response)
+                  $("#matchPic").html("<img width='100%' src="+ data.photo +">"); //Set the match's image as the image in the modal
+                  $("#matchName").html(data.name); //Set the match's name as the name in the modal
+                  $('#matchModal').modal(); //display the modal
                  });
                  
                  //Reset the Form
@@ -284,12 +294,11 @@
               else{
                 $("#message").show();
               }
-            })
-            
+            });
         </script>
+        
         <script type="text/javascript" src="../routing/apiRoutes.js"></script>
         <script type="text/javascript" src="../routing/htmlRoutes.js"></script>
-        <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </body>

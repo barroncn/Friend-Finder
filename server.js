@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 // Routes
 // =============================================================
 
+//call the routes we made in the other .js files and pass in the in-scope express function 
 apiRoutes(app);
 htmlRoutes(app);
 

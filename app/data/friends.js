@@ -1,4 +1,4 @@
-//App data for 7 potential friend matches
+//App data for potential friend matches
 
 var friends = [
   
@@ -16,8 +16,7 @@ var friends = [
         1,
         1,
         2
-      ],
-    "sum": 14
+      ]
   },
   
   {
@@ -34,8 +33,7 @@ var friends = [
         5,
         5,
         5
-      ],
-    "sum": 50
+      ]
   },
   
   {
@@ -52,8 +50,7 @@ var friends = [
         5,
         4,
         1
-      ],
-    "sum": 32
+      ]
   },
   
   {
@@ -70,8 +67,7 @@ var friends = [
         3,
         3,
         3
-      ],
-    "sum": 30
+      ]
   },
   
   {
@@ -88,8 +84,7 @@ var friends = [
         4,
         4,
         1
-      ],
-    "sum": 28
+      ]
   },
   
   {
@@ -106,8 +101,7 @@ var friends = [
         1,
         4,
         1
-      ],
-    "sum": 26
+      ]
   },
   
   {
@@ -124,8 +118,7 @@ var friends = [
         5,
         3,
         1
-      ],
-    "sum": 35
+      ]
   }
   
 ];

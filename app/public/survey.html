@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fredoka+One|Assistant" rel="stylesheet">
-        <link rel="stylesheet" href="./css/style.css" type="text/css" />
+        <link rel="stylesheet" href="./css/style.css" type="text/css">
         <script src="https://use.fontawesome.com/8bd2ed03e6.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     </head>
@@ -32,7 +32,7 @@
             </div>
             <div class="card">
               <div class="card-header round">
-                <h3>Survey Questions</h3>
+                <h3>Friend Finder Survey</h3>
               </div>
               <div class="card-block">
                 <h5 class="card-title">About You</h5>
@@ -40,13 +40,14 @@
                   <div class="form-group">
                     <label class="ques" for="name" >Name <span class="text-muted">(Required)</span></label>
                     <input type="name" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="">
-                    <small id="emailHelp" class="form-text text-muted"></small>
+                    <small class="form-text text-muted"></small>
                   </div>
                   <div class="form-group">
                     <label class="ques" for="photoLink" >Link to Photo Image <span class="text-muted">(Required)</span></label>
                     <input type="input" class="form-control" placeholder="" id="userImage">
                   </div>
                   <hr>
+                  <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 1</h5></label>
                     <p class="ques" class="form-text ">Your're glad Donald Trump is president.</p>
@@ -259,30 +260,24 @@
                                   "name":$("#userName").val().trim(),
                                   "photo":$("#userImage").val().trim(),
                                   "scores":[
-                                      $("#q1").text()[0], //Takes only the rating digit from the button text (the first index of the text)
-                                      $("#q2").text()[0],
-                                      $("#q3").text()[0],
-                                      $("#q4").text()[0],
-                                      $("#q5").text()[0],
-                                      $("#q6").text()[0],
-                                      $("#q7").text()[0],
-                                      $("#q8").text()[0],
-                                      $("#q9").text()[0],
-                                      $("#q10").text()[0]
-                                    ]
+                                            $("#q1").text()[0], //Takes only the rating digit from the button text (the first index of the text)
+                                            $("#q2").text()[0],
+                                            $("#q3").text()[0],
+                                            $("#q4").text()[0],
+                                            $("#q5").text()[0],
+                                            $("#q6").text()[0],
+                                            $("#q7").text()[0],
+                                            $("#q8").text()[0],
+                                            $("#q9").text()[0],
+                                            $("#q10").text()[0]
+                                          ]
                                 };
-                                
-                var sum = 0; //Set the answer choice sum to zero
                 
-                //loop through aNewFriend scores array to add up the answers choices
-                for (var i = 0; i < aNewFriend.scores.length; i++){
-                  sum += parseInt(aNewFriend.scores[i]);
-                }
-                
-                aNewFriend.sum = sum; //In the aNewFriend object, set a new key "sum" to the sum of the answer choices
-                
-                 //Send the aNewFriend object as data in a post request to /api/friends
-                 $.post("/api/friends", aNewFriend).done(function(data){//Once the request has been posted, the server will send back the matching friend object as "data" (see apiRoutes.js for how we selected the matching friend as the server's response)
+                console.log(aNewFriend);
+                      
+                 //Send the aNewFriend object as a string of JSON with key "data" in a post request to /api/friends
+                 $.post("/api/friends", {data:JSON.stringify(aNewFriend)}).done(function(data){//Once the request has been posted, the server will send back the matching friend object as "data" (see apiRoutes.js for how we selected the matching friend as the server's response)
+                  //$.post("/api/friends", aNewFriend, {contentType: "application/json"}).done(function(data){
                   $("#matchPic").html("<img width='100%' src="+ data.photo +">"); //Set the match's image as the image in the modal
                   $("#matchName").html(data.name); //Set the match's name as the name in the modal
                   $('#matchModal').modal(); //display the modal
@@ -299,8 +294,6 @@
             });
         </script>
         
-        <script type="text/javascript" src="../routing/apiRoutes.js"></script>
-        <script type="text/javascript" src="../routing/htmlRoutes.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     </body>

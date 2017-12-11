@@ -14,32 +14,102 @@ function apiRoutes(app) {// Even though app isn't in scope here, we can call the
     
     //If we want to post to /api/friends....
     app.post("/api/friends", function(req, res){
-        var newfriend = req.body; //This will be the newFriend object we create
-        var userSum = req.body.sum; //The sum from the newFriend object
-        var matchDiff = 50; //Set to an impossibly high number...MaxScore: 50, MinScore: 10, Thus MaxDiff = 40
+        var newFriend = JSON.parse(req.body.data); //This will be the newFriend object we create from our survey. req.body is the object with key="data" and value=newFriend stringified.
+        console.log(newFriend);
+        
+        var difference; //Where we will hold the average score difference between the user and each friend
+        var matchDiff = 50; //Set to an impossibly high number...MaxScore: 5, MinScore: 1, Thus MaxDiff = 4 x 10 = 40
         var index; //This will allow us to keep track of who in the array is the best match
         
-        //Loop through the friends array
-        //Note: if there are multiple friends who are equally compatable with the user, this method will select the FIRST friend in the array with the appropriate level of compatability (to get the LAST friend in the array, in the if statement we would use "<=")
+        //Loop through the friends array. Note: if there are multiple friends who are equally compatable with the user, this method will select the FIRST friend in the array with the appropriate level of compatability (to get the LAST friend in the array, in the if statement we would use "<=")
         for(var i = 0; i < friends.length; i++){
-            // diff is the absolute value of the difference between the users answer sum and the sum of the i-th friend in the array
-            var diff = Math.abs(userSum - friends[i].sum);
+            //loop through the responses arrays
+            difference = 0; //each time you start a comparing to a different friend, reset the difference to zero
+            
+            //Loop throught the scores array: for each friend (index i) in the friends array, we want to compare each answers score with that of the user
+            for(var j = 0; j < friends[0].scores.length; j++){
+                difference += Math.abs(parseInt(newFriend.scores[j]) - parseInt(friends[i].scores[j])); //find the difference of each question's score and add it up
+            }
+            
             //If the most recent friend in the friends array has answers that are more similar to the users...
-            if(diff < matchDiff){
+            if(difference < matchDiff){
                 //Set matchDiff to the new difference
-                matchDiff = diff;
+                matchDiff = difference;
                 //Set the index equal to the current index (the index of our best match thus far)
                 index = i;
             }
+            console.log(difference);
         }
-        friends.push(newfriend); //Add the user's profile to the friends array
+        friends.push(newFriend); //Add the user's profile to the friends array
         res.json(friends[index]); //Respond to the client with the object of the best matched friend
-        
-        //Logging for test purposes:
-        // console.log(matchDiff);
-        // console.log("Match Name: " + friends[index].name);
-        // console.log("Match Pic: " + friends[index].photo); 
     });
 }
 
 module.exports = apiRoutes; //Export the apiRoutes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // //If we want to post to /api/friends....
+    // app.post("/api/friends", function(req, res){
+    //     var newfriend = req.body; //This will be the newFriend object we create
+    //     var userSum = req.body.sum; //The sum from the newFriend object
+    //     var matchDiff = 50; //Set to an impossibly high number...MaxScore: 50, MinScore: 10, Thus MaxDiff = 40
+    //     var index; //This will allow us to keep track of who in the array is the best match
+        
+    //     //Loop through the friends array
+    //     //Note: if there are multiple friends who are equally compatable with the user, this method will select the FIRST friend in the array with the appropriate level of compatability (to get the LAST friend in the array, in the if statement we would use "<=")
+    //     for(var i = 0; i < friends.length; i++){
+    //         // diff is the absolute value of the difference between the users answer sum and the sum of the i-th friend in the array
+    //         var diff = Math.abs(userSum - friends[i].sum);
+    //         //If the most recent friend in the friends array has answers that are more similar to the users...
+    //         if(diff < matchDiff){
+    //             //Set matchDiff to the new difference
+    //             matchDiff = diff;
+    //             //Set the index equal to the current index (the index of our best match thus far)
+    //             index = i;
+    //         }
+    //     }
+    //     friends.push(newfriend); //Add the user's profile to the friends array
+    //     res.json(friends[index]); //Respond to the client with the object of the best matched friend
+        
+    //     //Logging for test purposes:
+    //     // console.log(matchDiff);
+    //     // console.log("Match Name: " + friends[index].name);
+    //     // console.log("Match Pic: " + friends[index].photo); 
+    // });

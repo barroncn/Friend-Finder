@@ -12,7 +12,7 @@ function htmlRoutes(app) { //Even though app is not defined here, we can pass it
     });
     
     //If the user wants to .get the homepage (or types in anything after the root "/" that is not defined...)
-    app.get("/:otherStuff?", function(req, res){
+    app.get("*", function(req, res){
       //The html for the home page is sent back to the client
       res.sendFile(path.join(__dirname, "../public/home.html"));
     });

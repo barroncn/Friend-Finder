@@ -1,7 +1,6 @@
 // Dependencies
 // =============================================================
 var express = require("express");
-var path = require("path");
 var bodyParser = require("body-parser");
 var apiRoutes = require("./app/routing/apiRoutes.js");
 var htmlRoutes = require("./app/routing/htmlRoutes.js");
@@ -31,7 +30,7 @@ app.use(bodyParser.text({ type: 'text/html' }));
 
 // lets us access the css file (if we had external client side js files we'd do this for them too...)
 //app.use('/static', express.static(path.join(__dirname, './css/style.css')));
-app.use(express.static('./css'));
+app.use(express.static('./app/public'));
 
 // Routes
 // =============================================================

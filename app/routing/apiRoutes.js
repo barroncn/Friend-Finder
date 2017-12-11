@@ -9,14 +9,12 @@ function apiRoutes(app) {// Even though app isn't in scope here, we can call the
     //If we want to .get to /api/friends...
     app.get("/api/friends", function(req, res) {
       //The friends array will be sent back as a JSON object 
-      return res.json(friends);
+      res.json(friends);
     });
     
     //If we want to post to /api/friends....
     app.post("/api/friends", function(req, res){
         var newFriend = JSON.parse(req.body.data); //This will be the newFriend object we create from our survey. req.body is the object with key="data" and value=newFriend stringified.
-        console.log(newFriend);
-        
         var difference; //Where we will hold the average score difference between the user and each friend
         var matchDiff = 50; //Set to an impossibly high number...MaxScore: 5, MinScore: 1, Thus MaxDiff = 4 x 10 = 40
         var index; //This will allow us to keep track of who in the array is the best match
@@ -38,7 +36,6 @@ function apiRoutes(app) {// Even though app isn't in scope here, we can call the
                 //Set the index equal to the current index (the index of our best match thus far)
                 index = i;
             }
-            console.log(difference);
         }
         friends.push(newFriend); //Add the user's profile to the friends array
         res.json(friends[index]); //Respond to the client with the object of the best matched friend

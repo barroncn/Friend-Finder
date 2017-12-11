@@ -272,12 +272,9 @@
                                             $("#q10").text()[0]
                                           ]
                                 };
-                
-                console.log(aNewFriend);
                       
-                 //Send the aNewFriend object as a string of JSON with key "data" in a post request to /api/friends
-                 $.post("/api/friends", {data:JSON.stringify(aNewFriend)}).done(function(data){//Once the request has been posted, the server will send back the matching friend object as "data" (see apiRoutes.js for how we selected the matching friend as the server's response)
-                  //$.post("/api/friends", aNewFriend, {contentType: "application/json"}).done(function(data){
+                  //Send the aNewFriend object as a string of JSON with key "data" in a post request to /api/friends $(-could- have made traditional: true in a full $.ajax request, or just read the file with the brackets on it...)
+                  $.post("/api/friends", {data:JSON.stringify(aNewFriend)}).done(function(data){//Once the request has been posted, the server will send back the matching friend object as "data" (see apiRoutes.js for how we selected the matching friend as the server's response)
                   $("#matchPic").html("<img width='100%' src="+ data.photo +">"); //Set the match's image as the image in the modal
                   $("#matchName").html(data.name); //Set the match's name as the name in the modal
                   $('#matchModal').modal(); //display the modal

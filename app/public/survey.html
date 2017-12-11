@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fredoka+One|Assistant" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="./css/style.css" type="text/css" />
         <script src="https://use.fontawesome.com/8bd2ed03e6.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     </head>
@@ -16,7 +16,7 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle">   Friend Found: Your best match is <span id="matchName"></span>!</h3>
+                    <h3 class="modal-title" id="modalTitle">   Friend Found: Your best match is <span id="matchName" style="font-weight:bold"></span>!</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -38,18 +38,18 @@
                 <h5 class="card-title">About You</h5>
                 <form method="POST" id="theForm">
                   <div class="form-group">
-                    <label class="ques" for="name" >Name (required)</label>
+                    <label class="ques" for="name" >Name <span class="text-muted">(Required)</span></label>
                     <input type="name" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="">
                     <small id="emailHelp" class="form-text text-muted"></small>
                   </div>
                   <div class="form-group">
-                    <label class="ques" for="photoLink" >Link to Photo Image (required)</label>
+                    <label class="ques" for="photoLink" >Link to Photo Image <span class="text-muted">(Required)</span></label>
                     <input type="input" class="form-control" placeholder="" id="userImage">
                   </div>
                   <hr>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 1</h5></label>
-                    <p class="ques" class="form-text ">Your mind is always buzzing with unexplored ideas and plans.</p>
+                    <p class="ques" class="form-text ">Your're glad Donald Trump is president.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -66,7 +66,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 2</h5></label>
-                    <p class="ques" class="form-text ">Generally speaking, you rely more on your experience than your imagination.</p>
+                    <p class="ques" class="form-text ">You care more about being polite and making people feel comfortable than you do about letting everyone know your opinion.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -83,7 +83,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 3</h5></label>
-                    <p class="ques" class="form-text ">You find it easy to stay relaxed and focused even when there is some pressure.</p>
+                    <p class="ques" class="form-text ">You would rather visit a museum than a sporting event.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -100,7 +100,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 4</h5></label>
-                    <p class="ques" class="form-text ">You rarely do something just out of sheer curiosity.</p>
+                    <p class="ques" class="form-text ">You would rather go shopping than go for a hike.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -117,7 +117,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 5</h5></label>
-                    <p class="ques" class="form-text ">People can rarely upset you.</p>
+                    <p class="ques" class="form-text ">You would rather cook a meal than go to a fancy dinner.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -134,7 +134,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 6</h5></label>
-                    <p class="ques" class="form-text ">It is often difficult for you to relate to other people’s feelings.</p>
+                    <p class="ques" class="form-text ">You would rather spend your money on nice things than spend it on experiences.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -151,7 +151,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 7</h5></label>
-                    <p class="ques" class="form-text ">In a discussion, truth should be more important than people’s sensitivities.</p>
+                    <p class="ques" class="form-text ">You are constantly finding new things to learn.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -168,7 +168,7 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleSelect1"><h5>Question 8</h5></label>
-                    <p class="ques" class="form-text ">You rarely get carried away by fantasies and ideas.</p>
+                    <p class="ques" class="form-text ">You can't stand to let dirty dishes collect in the sink.</p>
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle text-muted" type="button" id="q8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select an Option
@@ -216,9 +216,11 @@
                       </div>
                     </div>
                   </div>
-                  <button id="submit" type="submit" class="btn btn-primary"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit</button>
                   <br>
-                  <p id="message">Please Input All Information</p>
+                  <button id="submit" type="submit" class="btn btn-primary" style="width:100%"><i class="fa fa-check-circle" aria-hidden="true"></i> Submit</button>
+                  <br>
+                  <br>
+                  <p id="message" style="color:red; text-align:center">Please Complete All Survey Information</p>
                 </form>
               </div>
             </div>

@@ -1,4 +1,4 @@
-Friend Finder App
+# Friend Finder App
 
 [Check it out here!](https://stark-atoll-94774.herokuapp.com/)
 
